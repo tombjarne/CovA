@@ -1,0 +1,1 @@
+http://sedac.ciesin.columbia.edu/downloads/data/ipcc/ipcc-is92-emissions-scenarios-v1-1/is92-scenarios-a-f-ver1-1-final.xls
