@@ -1,21 +1,39 @@
 import requests
-from socket import *
-import json
-socket = socket()
-socket.bind(('', 8080))
-socket.listen(4)
-ns, na = socket.accept()
+import connexion
 
-while 1:
-    try:
-        data = ns.recv(8192)
-    except:
-        ns.close()
-        socket.close()
-        break
+from flask import (
+    Flask,
+    render_template
+)
 
-    data = json.loads(data)
-    print(data)
+# Create application instance
+app = connexion.App(__name__, specification_dir="/")
+
+#Read swagger.yml
+app.add_api('swagger.yml')
+
+#Create URL to route for '/'
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+#Standalone
+if __name__ == 'main':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
+
+# Application instance
+#app = Flask(__name__, template_folder="templates")
+
+#URL for '/'
+#@app.route('/')
+#def home():
+#    return render_template("home.html")
+
+#Standalone - run
+#if __name__ == '__main__':
+#    app.run(debug=True)
+
 
 #response = requests.get("https://api.covid19api.com/summary")
 #print(response)
