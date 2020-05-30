@@ -143,6 +143,5 @@ function renderLocationInput() {
 
         root.appendChild(optInWrapper);
         optInWrapper.appendChild(optInHeading);
-
     }
 }

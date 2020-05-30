@@ -6,6 +6,8 @@
         <meta charset="UTF-8">
         <script type="text/javascript" src="./../core/location_module.js"></script>
         <script type="text/javascript" src="./../core/auto_module.js"></script>
+        <script type="text/javascript" src="./../core/interaction_module.js"></script>
+        <script src="https://kit.fontawesome.com/67874e0ff8.js" crossorigin="anonymous"></script>
     </head>
 <body>
     <nav>
@@ -15,14 +17,8 @@
             <a href="statistics.html">Statistics</a>
             <a href="about.html">About CovA</a>
             <article id="current-details-wrapper">
-                <div id="country-name-wrapper">
-                    <p id="country-name"></p>
-                </div>
-                <div id="deaths-total-wrapper">
-                    <p id="deaths-total"></p>
-                </div>
-                <div id="infected-total-wrapper">
-                    <p id="infected-total"></p>
+                <div id="co-details-preview" onclick="showCoDetails()">
+                    <i id="virus" class="fas fa-virus"></i>
                 </div>
             </article>
         </section>
@@ -38,10 +34,32 @@
             </article>
         </section>
         <section class="hero-info" id="hero-info">
-            <h2 class="big-heading">Environmental changes</h2>
+            <h2 class="big-heading">Fundamental changes</h2>
+            <article class="details-wrapper">
+                <div class="focus-wrapper">
+                    <i class="fas fa-plane"></i>
+                    <h3>Travel restrictions</h3>
+                    <p>Due to worldwide travel restrictions almost 80% of flight traffic was cut</p>
+                </div>
+                <div class="focus-wrapper">
+                    <i class="fas fa-route"></i>
+                    <h3>Social distancing</h3>
+                    <p>Due to worldwide travel restrictions grey cities suddenly turned green and the skies blue.</p>
+                </div>
+                <div class="focus-wrapper">
+                    <i class="far fa-lightbulb"></i>
+                    <h3>Energy consumption</h3>
+                    <p>Due to worldwide travel restrictions grey cities suddenly turned green and the skies blue.</p>
+                </div>
+            </article>
+        </section>
+        <section>
+            <h2>Environmental impacts</h2>
             <article>
-                <div>
-                    <
+                <div class="focus-wrapper">
+                    <i class="far fa-lightbulb"></i>
+                    <h3>Energy consumption</h3>
+                    <p>Due to worldwide travel restrictions grey cities suddenly turned green and the skies blue.</p>
                 </div>
             </article>
         </section>
