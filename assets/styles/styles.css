@@ -608,6 +608,11 @@ a {
 
 #logo {
     width: 70px;
+    cursor: pointer;
+}
+
+footer h3 {
+    cursor: pointer;
 }
 
 .skip-btn {
