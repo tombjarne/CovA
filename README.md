@@ -64,7 +64,7 @@ Social Feature
 Besides being able to play around with all sorts of data on CovA users should at some point be able to create an account, preferably with third-party options.
 
 Github
-https://drive.google.com/drive/folders/1YpBLuWdC3J1IumY-gHB3QLR9gLa0PqA7?usp=sharing
+https://github.com/tombjarne/CovA
 
 Swagger
 https://app.swaggerhub.com/apis/tombjarne/CovA/1.0.0
