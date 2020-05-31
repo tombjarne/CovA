@@ -12,7 +12,7 @@ document.addEventListener("load", renderLocationInput(), true);
 
 function retrieveLocationInput(request, parent, btn) {
     let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "./../servlet/locations.py", true);
+    xhttp.open("GET", "./../servlet/autocomplete.py", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
