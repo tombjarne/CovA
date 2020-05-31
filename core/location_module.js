@@ -8,52 +8,68 @@ import {Severe} from "./severe";
     Listeners
  */
 
+var alreadyInvoked = false;
+
 document.addEventListener("load", renderLocationInput(), true);
 //document.body.addEventListener("change", renderLocationInput());
 
 function retrieveLocationInput(request, parent, btn) {
     let xhttp = new XMLHttpRequest();
-    console.log("localhost:5000/autocomplete?country="+request);
-    xhttp.open("GET", "localhost:5000/autocomplete?country="+request, true);
+    let response;
+
+    removeAutoComplete();
+    xhttp.open("GET", "http://localhost:5000/autocomplete?country="+request, true);
     //xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let response = this.responseText;
-            console.log(response);
-            let content = response.results;
-            let container = false;
-
-            for(let i = 0; i < response.length;i++){
-                let resultItem = document.createElement('DIV');
-                resultItem.className = 'result-item';
-
-                let resultItemContext = document.createElement('P');
-                resultItemContext.innerHTML = content[i].name;
-                resultItemContext.className = "result-item-context";
-                resultItemContext.id = content[i].id.toString();
-                resultItemContext.onclick = function () {
-                    sessionStorage.setItem('country', this.innerHTML);
-                    sessionStorage.setItem('countryId', this.id);
-                    btn.id = 'submit-btn-active';
-                }
-
-                while (container == false){
-                    parent.appendChild(resultItem);
-                    container = true;
-                }
-
-                resultItem.append(resultItemContext);
+        if (this.status == 200) {
+            if(JSON.parse(this.responseText)){
+                response = this.responseText;
+                createAutoComplete(response, parent);
             }
-
         } else {
-            console.log("an error has occured, please try again later");
+
         }
     };
+    xhttp.onerror = function() {}
     xhttp.send();
 }
 
+function createAutoComplete(response, parent) {
+    response = JSON.parse(response);
+
+    for(let i = 0; i < 3;i++){
+        let resultItem = document.createElement('DIV');
+        resultItem.className = 'result-item';
+
+        let resultItemContext = document.createElement('P');
+        resultItemContext.innerHTML = response[i].country;
+        resultItemContext.className = "result-item-context";
+        resultItemContext.id = response[i].country;
+        resultItemContext.onclick = function () {
+            sessionStorage.setItem('country', this.innerHTML);
+            sessionStorage.setItem('countryId', this.id);
+            document.getElementById("searchbar").value = sessionStorage.getItem("country");
+            document.getElementById("submit-btn").setAttribute('disabled', false);
+            removeAutoComplete();
+        }
+
+        if(document.getElementById(resultItemContext.id) == null){
+            parent.parentNode.appendChild(resultItem);
+            resultItem.append(resultItemContext);
+        }
+    }
+
+}
+
+function removeAutoComplete() {
+    let fields = document.getElementsByClassName("result-item");
+    let parent = document.getElementById("search-bar-wrapper");
+    for(let i = 0; i < fields.length; i++){
+        parent.removeChild(fields[i]);
+    }
+}
+
 function renderLocationInput() {
-    console.log(sessionStorage.getItem("optIn"));
     if(sessionStorage.getItem("optIn") == "0"){
         let root = document.childNodes[1];
 
@@ -76,9 +92,11 @@ function renderLocationInput() {
 
         let submitBtn = document.createElement('A');
         submitBtn.className = 'submit-btn';
+        submitBtn.id ="submit-btn";
         submitBtn.innerHTML = "Submit";
-        submitBtn.onlick = function () {
-            let xhttp = new XMLHttpRequest();
+        submitBtn.setAttribute('disabled', true);
+        submitBtn.onclick = function () {
+            /*let xhttp = new XMLHttpRequest();
             xhttp.open("GET", "./../servlet/location_log.py", true);
             xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhttp.onreadystatechange = function() {
@@ -98,8 +116,13 @@ function renderLocationInput() {
                 } else {
                     console.log("an error has occured, please try again later");
                 }
-            };
+
+
+            }
             xhttp.send(request);
+
+             */
+            root.removeChild(promptContainer);
             sessionStorage.setItem("optIn", "1");
         }
 
@@ -116,7 +139,7 @@ function renderLocationInput() {
         searchBar.type = 'text';
         searchBar.placeholder = 'Search';
         searchBar.id = 'searchbar';
-        searchBar.onkeyup = function () {
+        searchBar.onkeydown = function () {
             let input = this.value;
             retrieveLocationInput(input, this, submitBtn);
         }

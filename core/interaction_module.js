@@ -1,20 +1,24 @@
 function showCoDetails() {
 
-        let root = document.getElementById("co-details-preview").parentNode;
-
+    let root = document.getElementById("co-details-preview").parentNode;
     if(root.childElementCount === 1) {
 
         let infectedNum = 0;
         let recoveredNum = 0;
         let country = sessionStorage.getItem("country");
         let index;
-        let query;
+        let query = "";
         let xhttp = new XMLHttpRequest();
 
+        /*
         if(country != undefined){
-            query = "/live/country/"+country;
+            console.log(country);
+            query += "/live/country/"+country;
             index = 1;
+        } else {
+            query = "summary";
         }
+         */
 
         query = "summary";
 
@@ -27,7 +31,6 @@ function showCoDetails() {
                     result = JSON.parse(this.responseText)[index];
                 }
                 result = JSON.parse(this.responseText);
-                console.log(result.Global.TotalConfirmed);
                 infectedNum = JSON.stringify(result.Global.TotalConfirmed);
                 recoveredNum = JSON.stringify(result.Global.TotalRecovered);
 
@@ -86,7 +89,6 @@ function next() {
     let imageList = [relPath + "/assets/img/sample-1.jpg", relPath + "/assets/img/sample-2.jpg", relPath + "/assets/img/sample-3.jpg"];
 
     if(obj.src.includes(imageList[0])){
-        console.log("invoked");
         obj.src = imageList[1];
         document.getElementById("data-explorer-mock").src = imageList[1];
     }
@@ -106,7 +108,6 @@ function next() {
 
 function toggleMap(obj) {
     let map = document.getElementById("data-explorer-wrapper");
-    console.log(map.style.display);
     if(map.style.display != "flex"){
         map.style.display = "flex";
         obj.innerHTML = "Close map";

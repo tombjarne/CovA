@@ -3,7 +3,12 @@ from flask import Flask, render_template, jsonify, make_response, request
 import json
 import xlrd
 import json
+from flask_cors import CORS, cross_origin
+
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 countries = ("./EF.xlsx")
 
@@ -13,6 +18,7 @@ sheet = workbook.sheet_by_index(0)
 #print(sheet.cell_value(0,0))
 
 @app.route("/autocomplete", methods=['GET'])
+@cross_origin()
 def index():
 
     #entries = json.dumps(scrape("country"))
@@ -41,11 +47,12 @@ def index():
         else:
             snippet = False
 
-    #r = make_response(json.dumps(suggestion_dict))
-    #r.mimetype = 'application/json'
-    #return r
+    #    return json.dumps(suggestion_dict)
 
-    return json.dumps(suggestion_dict)
+    r = make_response(json.dumps(suggestion_dict))
+    r.mimetype = 'application/json'
+    r.status_code = 200
+    return r
 
 """@app.route('/parse_data', methods=['GET', 'POST'])
 def parse_data():

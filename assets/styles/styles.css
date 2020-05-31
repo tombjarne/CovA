@@ -48,7 +48,7 @@ h4 {
     font-size: 18px;
 }
 
-.fas, .far {
+.fas, .far, .fab {
     font-size: 60px;
 }
 
@@ -154,6 +154,8 @@ h4 {
     width: 100vw;
     background-color: white;
     padding: 45px 0px 45px 0px;
+    justify-content: center;
+    align-items: center;
 }
 
 .icon-details-wrapper div i, icon-details-wrapper div H3 {
@@ -210,6 +212,13 @@ h4 {
     justify-content: center;
     width: 90vw;
     margin-bottom: 25px;
+}
+
+.result-item-context {
+    background-color: crimson;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 ul>li {
@@ -514,16 +523,6 @@ a {
     margin-bottom: 45px;
 }
 
-#economics-explorer-background {
-    background: url("./../img/pattern.png");
-    opacity: 0.5;
-    z-index: -1;
-    width: 100vw;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-}
-
 #prompt-container {
     font-family: Montserrat;
     position: fixed;
@@ -569,6 +568,43 @@ a {
     background-color: transparent;
 }
 
+#creative-details {
+    width: 100vw;
+    background: url("./../img/pattern.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ol {
+    margin: 0 0 1.5em;
+    padding: 0;
+    counter-reset: item;
+}
+
+ol > li {
+    margin: 0;
+    padding: 0 0 0 2em;
+    text-indent: -2em;
+    list-style-type: none;
+    counter-increment: item;
+}
+
+ol > li:before {
+    display: inline-block;
+    width: 1em;
+    padding-right: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    content: counter(item) ".";
+    color: crimson;
+}
+
+#creative-details article ol {
+    font-size: 20px;
+}
+
 .submit-btn {
     padding: 10px;
     border-radius: 25px;
@@ -588,5 +624,6 @@ a {
 #btn-wrapper {
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
 }
 
