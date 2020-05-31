@@ -1,4 +1,5 @@
-/*import {Insignificant} from "./insignificant";
+/*
+import {Insignificant} from "./insignificant";
 import {Moderate} from "./moderate";
 import {Severe} from "./severe";
 */
@@ -12,11 +13,13 @@ document.addEventListener("load", renderLocationInput(), true);
 
 function retrieveLocationInput(request, parent, btn) {
     let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "./../servlet/autocomplete.py", true);
-    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    console.log("localhost:5000/autocomplete?country="+request);
+    xhttp.open("GET", "localhost:5000/autocomplete?country="+request, true);
+    //xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let response = this.responseText;
+            console.log(response);
             let content = response.results;
             let container = false;
 
@@ -46,7 +49,7 @@ function retrieveLocationInput(request, parent, btn) {
             console.log("an error has occured, please try again later");
         }
     };
-    xhttp.send(request);
+    xhttp.send();
 }
 
 function renderLocationInput() {
@@ -67,15 +70,6 @@ function renderLocationInput() {
 
         let searchBarWrapper = document.createElement('DIV');
         searchBarWrapper.id = "search-bar-wrapper";
-
-        let searchBar = document.createElement('INPUT');
-        searchBar.type = 'text';
-        searchBar.placeholder = 'Search';
-        searchBar.id = 'searchbar';
-        searchBar.onkeyup = function () {
-            let input = this.value;
-            retrieveLocationInput(input, this, btn);
-        }
 
         let btnWrapper = document.createElement('DIV');
         btnWrapper.id = "btn-wrapper";
@@ -115,7 +109,16 @@ function renderLocationInput() {
         skipBtn.onclick = function () {
             root.removeChild(promptContainer);
             sessionStorage.setItem("optIn", "2");
-            window.location = "index.html";
+            location.reload();
+        }
+
+        let searchBar = document.createElement('INPUT');
+        searchBar.type = 'text';
+        searchBar.placeholder = 'Search';
+        searchBar.id = 'searchbar';
+        searchBar.onkeyup = function () {
+            let input = this.value;
+            retrieveLocationInput(input, this, submitBtn);
         }
 
         root.appendChild(promptContainer);
@@ -128,13 +131,12 @@ function renderLocationInput() {
         btnWrapper.appendChild(skipBtn);
     } else {
         let root = document.childNodes[1];
-        console.log(root);
 
         let optInWrapper = document.createElement("DIV");
         optInWrapper.className = "opt-in-wrapper";
         optInWrapper.onclick = function () {
             sessionStorage.setItem("optIn", "0");
-            window.location = "index.html";
+            location.reload();
         }
 
         let optInHeading = document.createElement("P");

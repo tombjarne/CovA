@@ -1,47 +1,129 @@
 function showCoDetails() {
-    let root = document.getElementById("co-details-preview").parentNode;
+
+        let root = document.getElementById("co-details-preview").parentNode;
+
     if(root.childElementCount === 1) {
 
-        let detailsWrapper = document.createElement("DIV");
-        detailsWrapper.className = "co-details-parent";
-        detailsWrapper.id = "co-details-parent";
+        let infectedNum = 0;
+        let recoveredNum = 0;
+        let country = sessionStorage.getItem("country");
+        let index;
+        let query;
+        let xhttp = new XMLHttpRequest();
 
-        let country = document.createElement("H4");
-        country.className = "co-details";
-        country.innerHTML = "Global";
+        if(country != undefined){
+            query = "/live/country/"+country;
+            index = 1;
+        }
 
-        let infectedWrapper = document.createElement("DIV");
-        infectedWrapper.className = "co-details-wrapper";
+        query = "summary";
 
-        let infected = document.createElement("P");
-        infected.className = "co-details";
-        infected.innerHTML = "Infected: 4534532";
+        xhttp.open("GET", "https://api.covid19api.com/"+query, true);
+        xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(index == 1){
+                    index = JSON.parse(this.responseText).length;
+                    result = JSON.parse(this.responseText)[index];
+                }
+                result = JSON.parse(this.responseText);
+                console.log(result.Global.TotalConfirmed);
+                infectedNum = JSON.stringify(result.Global.TotalConfirmed);
+                recoveredNum = JSON.stringify(result.Global.TotalRecovered);
 
-        let infectedNumber = document.createElement("P");
-        infectedNumber.className = "co-details-highlight";
+                let detailsWrapper = document.createElement("DIV");
+                detailsWrapper.className = "co-details-parent";
+                detailsWrapper.id = "co-details-parent";
 
-        let healthyWrapper = document.createElement("DIV");
-        healthyWrapper.className = "co-details-wrapper";
+                let country = document.createElement("H4");
+                country.className = "co-details";
+                country.innerHTML = "Global";
 
-        let healthy = document.createElement("P");
-        healthy.className = "co-details";
-        healthy.innerHTML = "Healthy: 3423345";
+                let infectedWrapper = document.createElement("DIV");
+                infectedWrapper.className = "co-details-wrapper";
 
-        let healthyNumber = document.createElement("P");
-        healthyNumber.className = "co-details-highlight";
+                let infected = document.createElement("P");
+                infected.className = "co-details";
+                infected.innerHTML = "Infected: ";
 
-        root.appendChild(detailsWrapper);
-        detailsWrapper.appendChild(country);
-        detailsWrapper.appendChild(infectedWrapper);
-        infectedWrapper.appendChild(infected);
-        infectedWrapper.appendChild(infectedNumber);
-        detailsWrapper.appendChild(healthyWrapper);
-        healthyWrapper.appendChild(healthy);
-        healthyWrapper.appendChild(healthyNumber);
+                let infectedNumber = document.createElement("P");
+                infectedNumber.className = "co-details-highlight";
+                infectedNumber.innerHTML = infectedNum;
 
-        added = true;
+                let healthyWrapper = document.createElement("DIV");
+                healthyWrapper.className = "co-details-wrapper";
+
+                let healthy = document.createElement("P");
+                healthy.className = "co-details";
+                healthy.innerHTML = "Recovered: ";
+
+                let healthyNumber = document.createElement("P");
+                healthyNumber.className = "co-details-highlight";
+                healthyNumber.innerHTML = recoveredNum;
+
+                root.appendChild(detailsWrapper);
+                detailsWrapper.appendChild(country);
+                detailsWrapper.appendChild(infectedWrapper);
+                infectedWrapper.appendChild(infected);
+                infectedWrapper.appendChild(infectedNumber);
+                detailsWrapper.appendChild(healthyWrapper);
+                healthyWrapper.appendChild(healthy);
+                healthyWrapper.appendChild(healthyNumber);
+
+                added = true;
+            }
+        };
+        xhttp.send();
     } else {
         root.removeChild(document.getElementById("co-details-parent"));
         added = false;
+}
+}
+
+function next() {
+    let obj = document.getElementById("data-explorer-mock");
+    let relPath = obj.src.split('/assets')[0];
+    let imageList = [relPath + "/assets/img/sample-1.jpg", relPath + "/assets/img/sample-2.jpg", relPath + "/assets/img/sample-3.jpg"];
+
+    if(obj.src.includes(imageList[0])){
+        console.log("invoked");
+        obj.src = imageList[1];
+        document.getElementById("data-explorer-mock").src = imageList[1];
+    }
+
+    if(obj.src.includes(imageList[1])){
+        obj.src = imageList[2];
+    }
+
+    if(obj.src.includes(imageList[2])){
+        obj.src = imageList[3];
+    }
+
+    if(obj.src.includes(imageList[3])){
+        obj.src = imageList[0];
+    }
+}
+
+function toggleMap(obj) {
+    let map = document.getElementById("data-explorer-wrapper");
+    console.log(map.style.display);
+    if(map.style.display != "flex"){
+        map.style.display = "flex";
+        obj.innerHTML = "Close map";
+    } else {
+        map.style.display = "none";
+        obj.innerHTML = "Explore the map";
+    }
+}
+
+function extendSection(bool) {
+    let section = document.getElementById("datasets-wrapper");
+
+    if(bool === true){
+        section.style.display = "flex";
+        document.getElementById("cta-arrow").style.display = "none";
+    } else {
+        section.style.display = "none";
+        document.getElementById("cta-arrow").style.display = "flex";
     }
 }

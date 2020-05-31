@@ -2,6 +2,7 @@
 from flask import Flask, render_template, jsonify, make_response, request
 import json
 import xlrd
+import json
 app = Flask(__name__)
 
 countries = ("./EF.xlsx")
@@ -16,6 +17,7 @@ def index():
 
     #entries = json.dumps(scrape("country"))
     entry = request.args.get('country').upper()
+    print(entry)
     suggestion_dict = {}
     pointer = 0
     snippet = False
@@ -26,16 +28,12 @@ def index():
         if entry in current[:5]:
             cell = {"country": str(sheet.cell(country, 0).value)}
             suggestion_dict[pointer] = cell
-            print(cell)
-            print(suggestion_dict[pointer])
             pointer += 1
             snippet = True
 
         elif entry in current and snippet == False:
             cell = {"country": str(sheet.cell(country, 0).value)}
             suggestion_dict[pointer] = cell
-            print(cell)
-            print(suggestion_dict[pointer])
             pointer += 1
 
         if len(entry) != len(current):
@@ -43,10 +41,13 @@ def index():
         else:
             snippet = False
 
-    print(json.dumps(suggestion_dict))
-    return suggestion_dict
+    #r = make_response(json.dumps(suggestion_dict))
+    #r.mimetype = 'application/json'
+    #return r
 
-@app.route('/parse_data', methods=['GET', 'POST'])
+    return json.dumps(suggestion_dict)
+
+"""@app.route('/parse_data', methods=['GET', 'POST'])
 def parse_data():
     if request.method == "POST":
         #data = request.form("blah")
@@ -54,7 +55,7 @@ def parse_data():
         search = request.get_json()
         #new_search = json.dumps(scrape(data))
         return jsonify(search)
-    return render_template('index.html')
+    return render_template('index.html')"""
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)

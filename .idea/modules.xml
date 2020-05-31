@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CovA.iml" filepath="$PROJECT_DIR$/CovA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../hdf4-all-enc/hdf4-all-enc.iml" filepath="$PROJECT_DIR$/../../hdf4-all-enc/hdf4-all-enc.iml" />
     </modules>
   </component>
 </project>

@@ -44,8 +44,21 @@ main {
     flex-direction: column;
 }
 
+h4 {
+    font-size: 18px;
+}
+
 .fas, .far {
     font-size: 60px;
+}
+
+.long-text-slim {
+    width: 60%;
+    margin-bottom: 25px;
+}
+
+.cta-arrow {
+    cursor: pointer;
 }
 
 #virus {
@@ -55,16 +68,27 @@ main {
 
 .big-heading {
     font-size: 42px;
+    margin-bottom: 10px;
 }
 
 .details-wrapper {
     display: flex;
     margin-top: 25px;
     width: 90vw;
+    justify-content: center;
 }
 
 .co-details-wrapper {
     margin-right: 10px;
+    display: flex;
+}
+
+.co-details-highlight {
+    margin-left: 5px;
+}
+
+#map {
+    width: 60vw;
 }
 
 #co-details-preview {
@@ -79,13 +103,58 @@ main {
 }
 
 .info-section {
-    background-color: crimson;
-    width: 100vw;
+    background: url("./../img/hero-shot-slim.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 60vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
-    animation: background-color-change 10s infinite;
+    color: white;
+    flex-direction: column;
+    border-radius: 0px 0px 25px 25px;
+}
+
+.info-section article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cta-arrow {
+    cursor: pointer;
+}
+
+#data-explorer {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cta-arrow {
+    display: flex;
+    cursor: pointer;
+}
+
+#datasets-wrapper, #economics-wrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icon-details-wrapper {
+    display: flex;
+    width: 60vw;
+}
+
+.icon-details-wrapper div i, icon-details-wrapper div H3 {
+    color: crimson;
 }
 
 .details-section {
@@ -96,19 +165,68 @@ main {
     width: 100vw;
 }
 
-.focus-desc {
-
+.fact-paragraph {
+    font-weight: 800;
+    font-size: 80px;
+    animation: fact-color 50s infinite;
+    margin-bottom: 0px;
 }
 
-@keyframes background-color-change {
-    0% { background-color: ghostwhite; }
-    50% { background-color: lightblue; }
-    100% { background-color: ghostwhite; }
+.fact {
+    margin-top: 0px;
+    font-weight: 500;
+}
+
+#important-data, #important-economical-data {
+    margin-bottom: 0px;
+}
+
+@keyframes fact-color {
+    0% { color: black; }
+    25% { color: crimson; }
+    100% { color: black; }
+}
+
+.focus-desc ul {
+    list-style: none;
+    font-size: 20px;
+    font-weight: 400;
+    margin:0 0 1.5em;
+    padding:0;
+    counter-reset:item;
+}
+
+.focus-desc h3 {
+    text-align: center;
+    font-size: 42px;
+}
+
+.vertical-details {
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+    margin-bottom: 65px;
+}
+
+ul>li {
+    margin:0;
+    padding:0 0 0 2em;
+    text-indent:-2em;
+    list-style-type:none;
+    counter-increment:item;
+}
+
+ul > li:before {
+    display: inline-block;
+    width: 1em;
+    padding-right: 0.5em;
+    font-weight: bold;
+    text-align: right;
+    content: counter(item) ".";
 }
 
 #co-details-parent h4{
-    margin-right: 10px;
-    margin-left: 10px;
+    margin: 0px 10px 0px 10px;
     color: white;
 }
 
@@ -147,14 +265,96 @@ main {
     font-family: Montserrat;
 }
 
+.month-controls {
+    color: white;
+    background-color: darkgrey;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.month-controls:hover {
+    background-color: lightgrey;
+}
+
+#data-explorer-wrapper {
+    display: none;
+}
+
+#data-explorer-mock {
+    width: 70vw;
+}
+
 #hero-heading {
     font-size: 58px;
     color: white;
 }
 
+#controll-bar {
+    height: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.control-bar-item {
+    background-color: crimson;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    width: 30%;
+    text-align: center;
+}
+
+#carbon {
+    background-color: deepskyblue;
+}
+
+#carbon:hover {
+    background-color: dodgerblue;
+}
+
+#nitrogen {
+    background-color: mediumseagreen;
+}
+
+#nitrogen:hover {
+    background-color: seagreen;
+}
+
+#humidity {
+    background-color: darkcyan;
+}
+
+#humidity:hover {
+    background-color: darkolivegreen;
+}
+
+.control-bar-item:hover {
+    background-color: #9C1A1C;
+}
+
 #hero-text {
     margin-left: 10vw;
     margin-top: 10vw;
+}
+
+#open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue;
+    padding: 10px;
+    border-radius: 15px 15px 0px 0px;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: -1;
+    cursor: pointer;
+    color: white;
 }
 
 #hero-text h2 {
@@ -166,6 +366,9 @@ main {
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px;
+    background-color: ghostwhite;
+    width: 100vw;
+    padding-bottom: 55px;
 }
 
 .focus-wrapper {
@@ -187,11 +390,19 @@ main {
     height: 60vh;
 }
 
+.simple-info-section {
+    border-radius: 25px;
+    margin: 70px 0px 100px 0px;
+}
+
 .hero-shot-small {
     background: url("./../img/hero-shot.jpg");
-    background-size: auto;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100vw;
-    height: 35vh;
+    height: 38vh;
 }
 
 .slim-heading {
@@ -236,6 +447,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 #current-details-wrapper {
@@ -283,6 +495,29 @@ main {
 
 a {
     text-decoration: none;
+}
+
+#economics-explorer {
+    width: 100vw;
+    background: url("./../img/pattern.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#map-section {
+    margin-bottom: 45px;
+}
+
+#economics-explorer-background {
+    background: url("./../img/pattern.png");
+    opacity: 0.5;
+    z-index: -1;
+    width: 100vw;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 #prompt-container {

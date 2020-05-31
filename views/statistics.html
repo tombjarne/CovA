@@ -29,7 +29,7 @@
     <section class="hero-shot-small">
         <article id="hero-text">
             <h1 id="hero-heading" class="slim-heading"><span id="anim-text">Statistics</span></h1>
-            <h2 class="slim-heading">See how the Coronavirus restrictions affected our environment and usage of digital data.</h2>
+            <h2 class="slim-heading">See how the Coronavirus restrictions affected our environment <br> economy and social life</h2>
         </article>
     </section>
     <section class="hero-info" id="hero-info">
@@ -40,7 +40,7 @@
                 <h3>Environmental Data</h3>
                 <p>Due to worldwide travel restrictions almost 80% of flight traffic was cut</p>
                 <div class="cta-small">
-                    <a href="#hero-info" class="cta-text-small">What has changed?</a>
+                    <a href="#toggle-map" class="cta-text-small" onclick="extendSection(true)">Explore the data</a>
                 </div>
             </div>
             <div class="focus-wrapper">
@@ -48,33 +48,112 @@
                 <h3>Economical Data</h3>
                 <p>Due to worldwide travel restrictions grey cities suddenly turned green and the skies blue.</p>
                 <div class="cta-small">
-                    <a href="#hero-info" class="cta-text-small">What has changed?</a>
+                    <a href="#economics-explorer" class="cta-text-small">What has changed?</a>
                 </div>
             </div>
         </article>
     </section>
-    <section class="info-section">
-        <article class="focus-desc">
-            <h2 class="big-heading">How is temperature and the <br> virus spread correlated?</h2>
-            <h3>Important datasets</h3>
-            <ul>
-                <li>Humidity</li>
-                <li>Temperatures</li>
-            </ul>
+    <section id="data-explorer">
+        <article id="map">
+            <div id="open">
+                <a id="toggle-map" onclick="toggleMap(this)">Explore the map</a>
+            </div>
+            <div id="data-explorer-wrapper">
+                <a id="left-control" class="month-controls" onclick=next()><</a>
+                <img id="data-explorer-mock" src="./../assets/img/sample-1.jpg">
+                <a id="right-control" class="month-controls" onclick="next()">></a>
+            </div>
+            <div id="controll-bar">
+                <a id="carbon" class="control-bar-item">Carbondioxide</a>
+                <a id="nitrogen" class="control-bar-item">Nitrogenoxide</a>
+                <a id="humidity" class="control-bar-item">Humidity</a>
+                <a id="temperatures" class="control-bar-item">Temperatures</a>
+            </div>
         </article>
     </section>
-    <section class="details-section">
-        <article>
-            <h2>Get creative during Covid19</h2>
+    <section class="info-section" id="map-section">
+        <article class="focus-desc">
+            <h3 id="important-data">Important datasets</h3>
+            <p class="long-text-slim">Our atmosphere can tell us a lot about climate change and climate in general. During lockdown some parameters were especially interesting to observe.</p>
+            <i class="fas fa-caret-down" class="cta-arrow" id="cta-arrow" onclick="extendSection(true)"></i>
+            <div id="datasets-wrapper">
+                <div class="focus-wrapper">
+                    <i class="fas fa-cloud-rain"></i>
+                    <h3>Humidity</h3>
+                </div>
+                <div class="focus-wrapper">
+                    <i class="fas fa-industry"></i>
+                    <h3>Nitrogenoxide</h3>
 
+                </div>
+                <div class="focus-wrapper">
+                    <i class="fas fa-car"></i>
+                    <h3>Carbondioxide</h3>
+
+                </div>
+                <div class="focus-wrapper">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Temperature</h3>
+
+                </div>
+                <i class="fas fa-caret-up" class="cta-arrow" onclick="extendSection(false)"></i>
+            </div>
         </article>
-        <article>
-            <ol>
-                <li>Learn how to code</li>
-                <li>Read a nice book</li>
-                <li>Creative writing</li>
-                <li>Photography</li>
-            </ol>
+    </section>
+    <section id="economics-explorer">
+        <h2 class="big-heading">Economical impacts</h2>
+        <article class="vertical-details">
+            <div class="fact-wrapper">
+                <p class="fact-paragraph">810.7 <br>BILLION $</p>
+                <p class="fact">Lost due to business travel suspension.</p>
+            </div>
+        </article>
+        <article class="icon-details-wrapper">
+            <div class="focus-wrapper">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Finances</h3>
+                <p>The current situation forced everyone and especially companies to pull back even more.</p>
+            </div>
+            <div class="focus-wrapper">
+                <i class="fas fa-file-code"></i>
+                <h3>New solutions</h3>
+                <p>But it also forced everyone to think new and creative. Digital apps and events were suddenly everywhere.</p>
+            </div>
+        </article>
+        <article class="vertical-details">
+            <div class="fact-wrapper alternate-background">
+                <p class="fact-paragraph">14.7% <br> UNEMPLOYED</p>
+                <p class="fact">Unemployment skyrocketed from 4.4% to 14.7% in the U.S.</p>
+            </div>
+        </article>
+    </section>
+    <section class="info-section simple-info-section">
+        <article class="focus-desc">
+            <h3 id="important-economical-data"></h3>
+            <p class="long-text-slim">Our atmosphere can tell us a lot about climate change and climate in general. During lockdown some parameters were especially interesting to observe.</p>
+            <div id="economics-wrapper">
+                <div class="focus-wrapper">
+                    <i class="fas fa-cloud-rain"></i>
+                    <i class="fas fa-cloud-rain"></i>
+                    <h3>Humidity</h3>
+                </div>
+                <div class="focus-wrapper">
+                    <i class="fas fa-industry"></i>
+                    <h3>Nitrogenoxide</h3>
+
+                </div>
+                <div class="focus-wrapper">
+                    <i class="fas fa-car"></i>
+                    <h3>Carbondioxide</h3>
+
+                </div>
+                <div class="focus-wrapper">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Temperature</h3>
+
+                </div>
+                <i class="fas fa-caret-up" class="cta-arrow" onclick="extendSection(false)"></i>
+            </div>
         </article>
     </section>
 </main>
