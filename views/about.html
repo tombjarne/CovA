@@ -39,7 +39,7 @@
                 <h3>The idea.</h3>
                 <p>Gather reliable information about Covid19 and it's affects in a scientific and playful manner</p>
                 <div class="cta-small">
-                    <a href="#toggle-map" class="cta-text-small" onclick="extendSection(true)">Explore the data</a>
+                    <a href="#important-data" class="cta-text-small" onclick="extendSection(true)">Features</a>
                 </div>
             </div>
             <div class="focus-wrapper">
@@ -47,118 +47,121 @@
                 <h3>Github.</h3>
                 <p>CovA is built using JavaScript and Python so far. We'll add up to it as CovA grows.</p>
                 <div class="cta-small">
-                    <a href="" class="cta-text-small">Go to Github</a>
+                    <a href="https://github.com/tombjarne/CovA" class="cta-text-small">Go to Github</a>
                 </div>
-            </div>
-        </article>
-    </section>
-    <section id="data-explorer">
-        <article id="map">
-            <div id="open">
-                <a id="toggle-map" onclick="toggleMap(this)">Explore the map</a>
-            </div>
-            <div id="data-explorer-wrapper">
-                <a id="left-control" class="month-controls" onclick=next()><</a>
-                <img id="data-explorer-mock" src="./../assets/img/sample-1.jpg">
-                <a id="right-control" class="month-controls" onclick="next()">></a>
-            </div>
-            <div id="controll-bar">
-                <a id="carbon" class="control-bar-item">Carbondioxide</a>
-                <a id="nitrogen" class="control-bar-item">Nitrogendioxide</a>
-                <a id="humidity" class="control-bar-item">Humidity</a>
-                <a id="temperatures" class="control-bar-item">Temperatures</a>
             </div>
         </article>
     </section>
     <section class="info-section" id="map-section">
         <article class="focus-desc">
-            <h3 id="important-data">Important datasets</h3>
-            <p class="long-text-slim">Our atmosphere can tell us a lot about climate change and climate in general. During lockdown some parameters were especially interesting to observe.</p>
+            <h3 id="important-data">Features</h3>
+            <p class="long-text-slim">CovA allows to access NASA and ESA research data to playfully get comfortable with reading and interpreting data.
+                Users will have a whole lot of features available as soon as CovA is out of version alpha.
+            </p>
             <i class="fas fa-caret-down" class="cta-arrow" id="cta-arrow" onclick="extendSection(true)"></i>
             <div id="datasets-wrapper">
                 <div class="focus-wrapper">
-                    <i class="fas fa-cloud-rain"></i>
-                    <h3>Humidity</h3>
+                    <i class="fas fa-map"></i>
+                    <h3 class="slim-heading">Map</h3>
+                    <p class="space-text">CovA allows users to explore environmental data in their region by submitting their country. This includes Carbondioxide, Nitrogendioxide, humidity and temperature data.
+                    This also helps to understand basic statistical correlations between weather and the spread of a virus.</p>
                 </div>
                 <div class="focus-wrapper">
-                    <i class="fas fa-industry"></i>
-                    <h3>Nitrogenoxide</h3>
-
+                    <i class="fas fa-people-arrows"></i>
+                    <h3 class="slim-heading">Covid19</h3>
+                    <p class="space-text">CovA is there to inform young and old about the current situation. Whether it is in their own country or worldwide -
+                    by using a sophisticated API endpoint the numbers will always be up to date.
+                    </p>
                 </div>
                 <div class="focus-wrapper">
-                    <i class="fas fa-car"></i>
-                    <h3>Carbondioxide</h3>
-
+                    <i class="fas fa-child"></i>
+                    <h3 class="slim-heading">Children friendly</h3>
+                    <p class="space-text">We would like to help especially children to understand the biology and science behind viruses and their spread.<br><br>
+                        We think it is important to not scare children, but rather give them the right material to work and play with. Oh did we mention
+                        that our website will be mobile friendly and packed with interactivity?
+                    </p>
                 </div>
                 <div class="focus-wrapper">
-                    <i class="fas fa-temperature-high"></i>
-                    <h3>Temperature</h3>
-
+                    <i class="fas fa-lock"></i>
+                    <h3 class="slim-heading">Secure</h3>
+                    <p class="space-text">Privacy is super important to us. That's why we, instead of using a third party interface, set up our own autocompletion API endpoint for our users<br><br>
+                        to safely enter their country. No personal data is collected on this webpage. In future releases we also want to focus on security and performance.
+                    </p>
                 </div>
                 <i class="fas fa-caret-up" class="cta-arrow" onclick="extendSection(false)"></i>
             </div>
         </article>
     </section>
     <section id="economics-explorer">
-        <h2 class="big-heading">Economical impacts</h2>
-        <article class="vertical-details">
-            <div class="fact-wrapper">
-                <p class="fact-paragraph">810.7 <br>BILLION $</p>
-                <p class="fact">Lost due to business travel suspension.</p>
+        <h2 class="big-heading">What's to come?</h2>
+        <article class="vertical-details" id="about">
+            <div class="fact-wrapper, light">
+                <p class="fact-paragraph-dark">CovA API</p>
+                <p class="fact"><span style="color:dodgerblue;">Already in development.</span><br>
+                    This API will be the main datasource for CovA providing selected data already formatted and bundled - ready to use.
+                    Some features will be server-side statistical analysis of potentially interesting data combinations or an integrated JavaScript Sandbox
+                    to learn young and old how to interpret data with state of the art web languages.
+                </p>
+            </div>
+            <div class="fact-wrapper, dark">
+                <p class="fact-paragraph-dark">Data Integration</p>
+                <p class="fact"><span style="color: coral;">Early planning.</span><br>
+                    To properly run both the API and the other consumed interfaces CovA needs to support all sorts of satellite data. Therefore it might be
+                    necessary to write small interpreter modules server side.
+                </p>
+            </div>
+            <div class="fact-wrapper, light">
+                <p class="fact-paragraph-dark">Code Playground</p>
+                <p class="fact"><span style="color: crimson;">Future goal.</span><br>
+                    At some point we would like to be able to integrate a JavaScript Sandbox for playing around with sample data from our own APi but also relevant data from third parties.
+                </p>
+            </div>
+            <div class="fact-wrapper, dark">
+                <p class="fact-paragraph-dark">Social Feature</p>
+                <p class="fact"><span style="color: crimson;">Future goal.</span><br>
+                    Besides being able to play around with all sorts of data on CovA users should at some point be able to create an account, preferably with
+                    third-party options. This feature would enable even more features we can not think of yet. Please be patient :-)
+                </p>
             </div>
         </article>
-        <article class="icon-details-wrapper">
+        <article class="icon-details-wrapper horizontal">
+            <h2>What is most important to us?</h2>
             <div class="focus-wrapper">
-                <i class="fas fa-money-bill-wave"></i>
-                <h3>Finances</h3>
-                <p>The current situation forced everyone and especially companies to pull back even more.</p>
+                <i class="fas fa-comments"></i>
+                <h3>Community</h3>
+                <p>Community is important! We rely on feedback and user experiences to improve CovA. Be our guest and write us an email!</p>
+                <div class="cta-small">
+                    <a href="mailto:tom@fjellsson.com" class="cta-text, black-text">Write email</a>
+                </div>
             </div>
             <div class="focus-wrapper">
-                <i class="fas fa-file-code"></i>
-                <h3>New solutions</h3>
-                <p>But it also forced everyone to think new and creative. Digital apps and events were suddenly everywhere.</p>
+                <i class="fas fa-satellite"></i>
+                <h3>Data / Tech</h3>
+                <p>We rely on strong partners and industry experts to fulfill our mission. Please reach out to us if you are interested!</p>
             </div>
         </article>
         <article class="vertical-details">
             <div class="fact-wrapper alternate-background">
-                <p class="fact-paragraph">14.7% <br> UNEMPLOYED</p>
-                <p class="fact">Unemployment skyrocketed from 4.4% to 14.7% in the U.S.</p>
+                <p class="fact-paragraph centered">THE<br> TEAM</p>
+                <div id="team">
+                    <img class="team-img" src="./../assets/img/tom.jpg">
+                    <h3>Tom Bjarne</h3>
+                    <p style="color: dodgerblue">Media Informatics Undergraduate</p>
+                    <p class="long-text-slim">Hi there! Thanks for stopping by on my profile section. It was a real challenge to put CovA together in just 48 hours, especially
+                    because I wanted to start coming up with an idea on 30.05 and thus had less time actually fixing and developing the application. <br>
+                    Some basic functionalities are already available and give you an insight on how much fun CovA could be in the future.
+                    </p>
+                </div>
             </div>
         </article>
     </section>
     <section class="info-section simple-info-section">
         <article class="focus-desc">
-            <h3 id="important-economical-data">What can you do about it?</h3>
-            <p class="long-text-slim">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                Vivamus elementum semper nisi. Aenean vulputate eleifend
+            <h3 id="important-economical-data">How was CovA made?</h3>
+            <p class="long-text-slim">We are incredibly thankful for NASA, ESA, JAXA, CNES and the CSA to host the SpaceApps Challenge Covid19 Edition in 2020.
+                From idea, to concept to paper (not literally) - CovA was completely developed in 48 hours from 30.05.2020 to 31.05.2020. We are looking forward
+                to the next SpaceApps Challenge!
             </p>
-            <div id="economics-wrapper">
-                <div class="focus-wrapper">
-                    <i class="fas fa-cloud-rain"></i>
-                    <i class="fas fa-cloud-rain"></i>
-                    <h3>Humidity</h3>
-                </div>
-                <div class="focus-wrapper">
-                    <i class="fas fa-industry"></i>
-                    <h3>Nitrogenoxide</h3>
-
-                </div>
-                <div class="focus-wrapper">
-                    <i class="fas fa-car"></i>
-                    <h3>Carbondioxide</h3>
-
-                </div>
-                <div class="focus-wrapper">
-                    <i class="fas fa-temperature-high"></i>
-                    <h3>Temperature</h3>
-
-                </div>
-                <i class="fas fa-caret-up" class="cta-arrow" onclick="extendSection(false)"></i>
-            </div>
-        </article>
     </section>
 </main>
 <footer>
