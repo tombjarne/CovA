@@ -22,7 +22,7 @@ openapi-spec-validator==0.2.8
 pdfkit==0.6.1
 pyrsistent==0.16.0
 python-dateutil==2.8.1
-PyYAML==5.3.1
+PyYAML==5.4
 quote==2.0
 requests==2.23.0
 requests-file==1.5.1
