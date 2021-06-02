@@ -31,6 +31,6 @@ scraper==0.1.0
 six==1.15.0
 swagger-client==1.0.0
 tldextract==2.2.2
-urllib3==1.25.9
+urllib3==1.26.5
 Werkzeug==1.0.1
 xlrd==1.2.0
